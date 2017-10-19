@@ -15,7 +15,7 @@ awk '{
             output[$2]+=1;
         }
         END { for (x in output) print x,output[x]
-}' top_url.txt url_ref.txt | sort -nrk 2 | awk '{if(NR<11) print}' | sed s/\"//g > top_ref.txt
+}' top_url.txt url_ref.txt | sort -nrk 2 | head -10 | sed s/\"//g > top_ref.txt
 # сумма запросов с топовых рефереров
 awk '{sum+=$2} END {print sum > "sum"}' top_ref.txt
 # итоговый вывод
